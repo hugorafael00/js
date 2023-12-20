@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>calculator</title>
+        <style>body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        input[type="button"] {
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            font-size: 16px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        </style>
+        <!-- <link rel="stylesheet" href="C:\Users\Claydson\Documents\high em prog\calculator\style.css"> -->
+    </head>
+    <body>
+        <p>Calculadora</p><br>
+        <h1 id='valor'></h1>
+        <script>
+            // faz os butons das operaçoes(html), e cada um retorna um valor para a function(js)
+            var c = 0;
+            var b = 0;
+            var i;
+            function nums(num){
+                var valor = document.getElementById('valor');
+                if (valor.innerHTML == '0' || c==1){
+                    valor.innerHTML = num;
+                    c = 0;
+                }
+                else{
+                    valor.innerHTML += num;
+                }
+                // console.log(valor);
+                // return 0;
+            }
+            function op(op){
+                // c = 0;
+                var valor = parseInt(document.getElementById('valor').innerHTML);
+                if (c == 0){
+                    b = valor;
+                    c = 1;
+                    document.getElementById('valor').innerHTML = 0;
+                    i = op;
+                }
+            }
+            function ig(){
+                var valor = parseInt(document.getElementById('valor').innerHTML);
+                if (i == '+'){
+                    f = b + valor;
+                }
+                if (i == '-'){
+                    f = b - valor;
+                }
+                if (i == '/'){
+                    f = b / valor;
+                }
+                if (i == '*'){
+                    f = b * valor;
+                }
+                document.getElementById('valor').innerHTML = f;
+                c = 1;
+                // return 0;       
+            }
+            function clear(){
+                document.getElementById("valor").innerHTML = '0';
+                c = 0;
+                // return 0;
+            }
+            function ac(){
+                var vav = document.getElementById("valor").innerHTML;
+                document.getElementById("valor").innerHTML = vav.slice(0, vav.length - 1);
+            }
+        </script>
+        <input id="da" type="button" onclick="nums(1)" value='1' >
+        <input id="da" type="button" onclick="nums(2)" value='2' >
+        <input id="da" type="button" onclick="nums(3)" value='3' ><br>
+        <input id="da" type="button" onclick="nums(4)" value='4' >
+        <input id="da" type="button" onclick="nums(5)" value='5' >
+        <input id="da" type="button" onclick="nums(6)" value='6' ><br>
+        <input id="da" type="button" onclick="nums(7)" value='7' >
+        <input id="da" type="button" onclick="nums(8)" value='8' >
+        <input id="da" type="button" onclick="nums(9)" value='9' ><br>
+        <input id="da" type="button" onclick="nums(0)" value='0' ><br>
+
+        <input id="op" type="button" onclick="op('+')" value='+'>
+        <input id="op" type="button" onclick="op('-')" value='-'>
+        <input id="op" type="button" onclick="op('*')" value='*'>
+        <input id="op" type="button" onclick="op('/')" value='/'>
+        <input id="ig" type="button" onclick="ig()" value="=" ><br>
+        
+        <button id="cl" onclick="clear()">C</button>
+        <input id ="op" type="button" onclick="ac()" value="AC">       
+       
+    </body>
+</html>
